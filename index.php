@@ -1,4 +1,4 @@
-
+<?php include "./includes/header.php" ?>
    <!-- Navigation -->
    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -184,3 +184,4 @@
    <!-- Bootstrap Core JavaScript -->
    <script src="js/bootstrap.min.js"></script>
 
+<?php include "./includes/footer.php" ?>
