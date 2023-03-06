@@ -1,5 +1,5 @@
-<?php include "includes/header.php";?>
-   <?php include "includes/navigation.php"; ?>
+<?php include "includes/admin_header.php";?>
+   <?php include "includes/admin_navigation.php"; ?>
       <div id="page-wrapper">
 
          <div class="container-fluid">
@@ -23,6 +23,10 @@
                      </form>
                   </div>
                   <div class="col-xs-6">
+                     <?php 
+                        $query = "SELECT * FROM categories";
+                        $select_categories = mysqli_query($connection, $query);
+                     ?>
                      <table class="table table-bordered table-hover">
                         <thead>
                            <tr>
@@ -31,10 +35,16 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <tr>
-                              <td>Baseball category</td>
-                              <td>Baseball category</td>
-                           </tr>
+                           <?php 
+                              while($row = mysqli_fetch_assoc($select_categories)){
+                                 $category_id = $row["category_id"];
+                                 $category_title = $row["category_title"];
+                                 echo "<tr>";
+                                 echo "<td>{$category_id}</td>";
+                                 echo "<td>{$category_title}</td>";
+                                 echo "</tr>";
+                              }
+                           ?>
                         </tbody>
                      </table>
                   </div>
@@ -48,4 +58,4 @@
       </div>
       <!-- /#page-wrapper -->
 
-<?php include "includes/footer.php" ?>
+<?php include "includes/admin_footer.php" ?>
