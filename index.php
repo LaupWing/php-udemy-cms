@@ -24,7 +24,6 @@
                   Page Heading
                   <small>Secondary Text</small>
                </h1>
-
                <!-- First Blog Post -->
                <h2>
                   <a href="#"><?php echo $post_title; ?></a>
@@ -34,6 +33,7 @@
                </p>
                <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date; ?></p>
                <hr>
+               he
                <img class="img-responsive" src="images/<?php $post_image; ?>" alt="">
                <hr>
                <p><?php echo $post_content; ?></p>
