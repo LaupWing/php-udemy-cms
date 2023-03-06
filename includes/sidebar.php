@@ -10,6 +10,11 @@
          if(!$search_query){
             die("QUERY FAILED ". mysqli_error($connection));
          }
+
+         $count = mysqli_num_rows($search_query);
+         if($count == 0){
+            echo "<h1> NO RESULTS </h1>";
+         }
       }
    ?>
    <!-- Blog Search Well -->
