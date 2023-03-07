@@ -52,7 +52,7 @@
                                     $category_title = $row["category_title"];
                               }
                            ?>
-                              <input value="<?php if(isset($cate)) ?>" class="form-control" type="text" name="category_title">
+                              <input value="<?php if(isset($category_title)) {echo $category_title;} ?>" class="form-control" type="text" name="category_title">
                            <?php } ?>
                         </div>
                         <div class="form-group">
