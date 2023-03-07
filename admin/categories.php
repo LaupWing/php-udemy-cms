@@ -54,9 +54,16 @@
                            ?>
                               <input value="<?php if(isset($category_title)) {echo $category_title;} ?>" class="form-control" type="text" name="category_title">
                            <?php } ?>
+                           <?php 
+                              if(isset($_POST["update_category"])){
+                                 $update_category_title = $_POST["category_title"];
+                                 $query = "update FROM categories SET category_title = '{$update_category_title}' WHERE category_id = {$category_id}";
+                                 $update_query = mysqli_query($connection, $query);
+                              }
+                           ?>
                         </div>
                         <div class="form-group">
-                           <input class="btn btn-primary" type="submit" name="submit" value="Update Category">
+                           <input class="btn btn-primary" type="submit" name="update_category" value="Update Category">
                         </div>
                      </form>
                   </div>
