@@ -19,8 +19,11 @@
                      }
 
                      switch($source){
-                        case "34":
-                           echo
+                        case "add_post":
+                           include "includes/add_post.php";
+                           break;
+                        default:
+                           include "includes/view_all_post.php";
                      }
                   ?>
                </div>
