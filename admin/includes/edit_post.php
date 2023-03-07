@@ -27,6 +27,23 @@
       <input type="text" name="title" value="<?php echo $post_title; ?>" class="form-control">
    </div>
    <div class="form-group">
+      <select name="" id="">
+         <?php 
+            $query = "SELECT * FROM categories WHERE category_id = $category_id";
+            $select_categories = mysqli_query($connection, $query);
+
+            confirm($select_categories);
+
+            while($row = mysqli_fetch_assoc($select_categories)){
+               $category_id = $row["category_id"];
+               $category_title = $row["category_title"];
+               echo "<option value=''></option>";
+            }
+         ?>
+         
+      </select>
+   </div>
+   <div class="form-group">
       <label for="post_category">Post Category Id</label>
       <input type="text" name="post_category_id" value="<?php echo $post_category_id; ?>" class="form-control">
    </div>
@@ -40,7 +57,7 @@
    </div>
    <div class="form-group">
       <label for="post_image">Post Image</label>
-      <input type="file" name="image">
+      <img width="100" src="../images/<?php echo $post_image; ?>" alt="">
    </div>
    <div class="form-group">
       <label for="post_tags">Post Tags</label>
@@ -48,9 +65,7 @@
    </div>
    <div class="form-group">
       <label for="post_content">Post Content</label>
-      <textarea name="post_content" class="form-control" cols="30" rows="10">
-         <?php echo $post_content; ?>
-      </textarea>
+      <textarea name="post_content" class="form-control" cols="30" rows="10"><?php echo $post_content; ?></textarea>
    </div>
 
    <div class="form-group">
