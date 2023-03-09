@@ -19,14 +19,14 @@
    }
 
    if(isset($_POST["update_post"])){
-      $post_author = $_POST["author"];
-      $post_title = $_POST["title"];
-      $post_category_id = $_POST["post_category"];
-      $post_status = $_POST["post_status"];
+      $post_author = mysqli_real_escape_string($connection, $_POST["author"]);
+      $post_title = mysqli_real_escape_string($connection, $_POST["title"]);
+      $post_category_id = mysqli_real_escape_string($connection, $_POST["post_category"]);
+      $post_status = mysqli_real_escape_string($connection, $_POST["post_status"]);
       $post_image = $_FILES["image"]["name"];
       $post_image_temp = $_FILES["image"]["tmp_name"];
-      $post_content = $_POST["post_content"];
-      $post_tags = $_POST["post_tags"];
+      $post_content = mysqli_real_escape_string($connection, $_POST["post_content"]);
+      $post_tags = mysqli_real_escape_string($connection, $_POST["post_tags"]);
 
       move_uploaded_file($post_image_temp, "../images/$post_image");
 
@@ -37,20 +37,17 @@
             $post_image = $row["post_image"];
          }
       }
-      echo $post_image;
-      echo $post_id;
-      echo $post_id;
+      
       $query = "UPDATE posts SET ";
       $query .= "post_title = '{$post_title}', ";
       $query .= "post_category_id = '{$post_category_id}', ";
       $query .= "post_date = now(), ";
-      // $query .= "post_author = '{$post_author}', ";
-      // $query .= "post_status = '{$post_status}', ";
-      // $query .= "post_tags = '{$post_tags}', ";
-      // $query .= "post_content = '{$post_content}', ";
-      // $query .= "post_image = '{$post_image}' ";
+      $query .= "post_author = '{$post_author}', ";
+      $query .= "post_status = '{$post_status}', ";
+      $query .= "post_tags = '{$post_tags}', ";
+      $query .= "post_content = '{$post_content}', ";
+      $query .= "post_image = '{$post_image}' ";
       $query .= "WHERE post_id = {$post_id} ";
-
       $update_post = mysqli_query($connection, $query);
       confirm($update_post);
    }
