@@ -29,7 +29,7 @@
    <div class="form-group">
       <select name="" id="">
          <?php 
-            $query = "SELECT * FROM categories WHERE category_id = $category_id";
+            $query = "SELECT * FROM categories";
             $select_categories = mysqli_query($connection, $query);
 
             confirm($select_categories);
@@ -37,7 +37,7 @@
             while($row = mysqli_fetch_assoc($select_categories)){
                $category_id = $row["category_id"];
                $category_title = $row["category_title"];
-               echo "<option value=''></option>";
+               echo "<option value='{$category_id}'>{$category_title}</option>";
             }
          ?>
          
