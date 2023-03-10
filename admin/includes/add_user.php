@@ -24,46 +24,47 @@
 
 <form action="" method="post" enctype="multipart/form-data">
    <div class="form-group">
-      <label for="title">Post Title</label>
-      <input type="text" name="title" class="form-control">
+      <label for="title">Firstname</label>
+      <input type="text" name="user_firstname" class="form-control">
    </div>
-   <select name="post_category" id="">
+   <div class="form-group">
+      <label for="post_status">Lastname</label>
+      <input type="text" name="user_lastname" class="form-control">
+   </div>
+   <select name="user_role" id="">
       <?php 
-         $query = "SELECT * FROM categories";
-         $select_categories = mysqli_query($connection, $query);
+         $query = "SELECT * FROM users";
+         $select_users = mysqli_query($connection, $query);
 
-         confirm($select_categories);
+         confirm($select_users);
 
-         while($row = mysqli_fetch_assoc($select_categories)){
-            $category_id = $row["category_id"];
-            $category_title = $row["category_title"];
-            echo "<option value='{$category_id}'>{$category_title}</option>";
+         while($row = mysqli_fetch_assoc($select_users)){
+            $user_id = $row["user_id"];
+            $user_role = $row["user_role"];
+            echo "<option value='{$user_id}'>{$user_role}</option>";
          }
       ?>
       
    </select>
-   <div class="form-group">
-      <label for="title">Post Author</label>
-      <input type="text" name="author" class="form-control">
-   </div>
-   <div class="form-group">
-      <label for="post_status">Post Status</label>
-      <input type="text" name="post_status" class="form-control">
-   </div>
-   <div class="form-group">
-      <label for="post_image">Post Image</label>
+   
+   <!-- <div class="form-group">
+      <label for="post_image">User Image</label>
       <input type="file" name="image">
+   </div> -->
+   <div class="form-group">
+      <label for="post_tags">Username</label>
+      <input type="text" name="username" class="form-control">
    </div>
    <div class="form-group">
-      <label for="post_tags">Post Tags</label>
-      <input type="text" name="post_tags" class="form-control">
+      <label for="post_content">Email</label>
+      <input name="user_email" class="form-control" type="email" />
    </div>
    <div class="form-group">
-      <label for="post_content">Post Content</label>
-      <textarea name="post_content" class="form-control" cols="30" rows="10"></textarea>
+      <label for="post_content">Password</label>
+      <input name="user_password" class="form-control" type="password" />
    </div>
 
    <div class="form-group">
-      <input type="submit" class="btn btn-primary" name="create_post"  value="Publish Post">
+      <input type="submit" class="btn btn-primary" name="create_user"  value="Publish Post">
    </div>
 </form>

@@ -7,14 +7,14 @@
          <th>Lastname</th>
          <th>Email</th>
          <th>Role</th>
-         <th>Date</th>
+         <!-- <th>Date</th> -->
       </tr>
    </thead>
    <tbody>
       <?php 
          $query = "SELECT * FROM users";
          $select_users = mysqli_query($connection, $query);
-         while($row = mysqli_fetch_assoc($select_comments)){
+         while($row = mysqli_fetch_assoc($select_users)){
             $user_id = $row["user_id"];
             $username = $row["username"];
             $user_password = $row["user_password"];
