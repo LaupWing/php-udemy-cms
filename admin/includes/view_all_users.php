@@ -38,17 +38,17 @@
             //    $post_title = $row["post_title"];
             //    echo "<td><a href='../post.php?p_id={$post_id}'> $post_title</a></td>";
             // }
-            echo "<td><a href='comments.php?approve={}'>Approve</a></td>";
-            echo "<td><a href='comments.php?unapprove={}'>Unapprove</a></td>";
+            echo "<td><a href='comments.php?change_to_admin={$user_id}'>Admin</a></td>";
+            echo "<td><a href='comments.php?change_to_subscriber={}'>Subscriber</a></td>";
             echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
             echo "</tr>";
          }
       ?>
       <?php 
-         if(isset($_GET["unapprove"])){
-            $comment_id = $_GET["unapprove"];
-            $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = {$comment_id}";
-            $unapprove_query = mysqli_query($connection, $query);
+         if(isset($_GET["change_to_admin"])){
+            $user_id = $_GET["change_to_admin"];
+            $query = "UPDATE users SET user_role = 'admin' WHERE user_id = {$user_id}";
+            $change = mysqli_query($connection, $query);
             header("Location: comments.php");
          }
          if(isset($_GET["approve"])){
