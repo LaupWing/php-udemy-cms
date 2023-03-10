@@ -2,15 +2,12 @@
    <thead>
       <tr>
          <th>Id</th>
-         <th>Author</th>
-         <th>Comment</th>
+         <th>Username</th>
+         <th>Firstname</th>
+         <th>Lastname</th>
          <th>Email</th>
-         <th>Status</th>
-         <th>In Response to</th>
+         <th>Role</th>
          <th>Date</th>
-         <th>Approve</th>
-         <th>Unapprove</th>
-         <th>Delete</th>
       </tr>
    </thead>
    <tbody>
@@ -30,14 +27,6 @@
             echo "<td>{$comment_id}</td>";
             echo "<td>{$comment_author}</td>";
             echo "<td>{$comment_content}</td>";
-            
-            // $query = "SELECT * FROM categories WHERE category_id = $post_category_id";
-            // $select_categories_id = mysqli_query($connection, $query);
-            // while($row = mysqli_fetch_assoc($select_categories_id)){
-            //    $category_title = $row["category_title"];
-            //    echo "<td>{$category_title}</td>";
-            // }
-            // echo "<td>{$post_status}</td>";
             echo "<td>{$comment_email}</td>";
             echo "<td>{$comment_status}</td>";
             $query = "SELECT * FROM posts WHERE post_id = $comment_post_id";
