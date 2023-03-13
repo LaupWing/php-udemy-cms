@@ -104,7 +104,12 @@
                         <i class="fa fa-list fa-5x"></i>
                      </div>
                      <div class="col-xs-9 text-right">
-                        <div class='huge'>13</div>
+                        <?php 
+                           $query = "SELECT * FROM categories";
+                           $select_all_catgegories = mysqli_query($connection, $query);
+                           $category_count = mysqli_num_rows($select_all_catgegories);
+                           echo "<div class='huge'>{$category_count}</div>"
+                        ?>
                         <div>Categories</div>
                      </div>
                   </div>
