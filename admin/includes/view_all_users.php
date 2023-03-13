@@ -38,8 +38,8 @@
             //    $post_title = $row["post_title"];
             //    echo "<td><a href='../post.php?p_id={$post_id}'> $post_title</a></td>";
             // }
-            echo "<td><a href='comments.php?change_to_admin={$user_id}'>Admin</a></td>";
-            echo "<td><a href='comments.php?change_to_subscriber={}'>Subscriber</a></td>";
+            echo "<td><a href='users.php?change_to_admin={$user_id}'>Admin</a></td>";
+            echo "<td><a href='users.php?change_to_subscriber={$user_id}'>Subscriber</a></td>";
             echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
             echo "</tr>";
          }
@@ -49,13 +49,13 @@
             $user_id = $_GET["change_to_admin"];
             $query = "UPDATE users SET user_role = 'admin' WHERE user_id = {$user_id}";
             $change = mysqli_query($connection, $query);
-            header("Location: comments.php");
+            header("Location: users.php");
          }
-         if(isset($_GET["approve"])){
-            $comment_id = $_GET["approve"];
-            $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = {$comment_id}";
-            $approve_query = mysqli_query($connection, $query);
-            header("Location: comments.php");
+         if(isset($_GET["change_to_subscriber"])){
+            $user_id = $_GET["change_to_subscriber"];
+            $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = {$user_id}";
+            $change = mysqli_query($connection, $query);
+            header("Location: users.php");
          }
          if(isset($_GET["delete"])){
             $user_id = $_GET["delete"];
