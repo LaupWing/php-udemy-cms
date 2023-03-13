@@ -1,6 +1,18 @@
 <?php 
    if(isset($_GET["edit"])){
       $user_id = $_GET["edit"];
+      $query = "SELECT * FROM users WHERE user_id = $user_id";
+      $select_user = mysqli_query($connection, $query);
+      while($row = mysqli_fetch_assoc($select_users)){
+         $user_id = $row["user_id"];
+         $username = $row["username"];
+         $user_password = $row["user_password"];
+         $user_firstname = $row["user_firstname"];
+         $user_lastname = $row["user_lastname"];
+         $user_email = $row["user_email"];
+         $user_image = $row["user_image"];
+         $user_role = $row["user_role"];
+      }
    }
 
    if(isset($_POST["edit_user"])){
@@ -29,13 +41,13 @@
 <form action="" method="post" enctype="multipart/form-data">
    <div class="form-group">
       <label for="title">Firstname</label>
-      <input type="text" name="user_firstname" class="form-control">
+      <input type="text" name="user_firstname" value="<?php echo $user_firstname ?>" class="form-control">
    </div>
    <div class="form-group">
       <label for="post_status">Lastname</label>
-      <input type="text" name="user_lastname" class="form-control">
+      <input type="text" name="user_lastname" value="<?php echo $user_lastname ?>" class="form-control">
    </div>
-   <select name="user_role" id="">
+   <select name="user_role" value="<?php echo $user_role ?>" id="">
       <option value="subscriber">Select options</option>      
       <option value="admin">Admin</option>      
       <option value="subscriber">Subscriber</option>      
@@ -47,15 +59,15 @@
    </div> -->
    <div class="form-group">
       <label for="post_tags">Username</label>
-      <input type="text" name="username" class="form-control">
+      <input type="text" value="<?php echo $username ?>" name="username" class="form-control">
    </div>
    <div class="form-group">
       <label for="post_content">Email</label>
-      <input name="user_email" class="form-control" type="email" />
+      <input name="user_email" value="<?php echo $user_email ?>" class="form-control" type="email" />
    </div>
    <div class="form-group">
       <label for="post_content">Password</label>
-      <input name="user_password" class="form-control" type="password" />
+      <input name="user_password" value="<?php echo $user_password ?>" class="form-control" type="password" />
    </div>
 
    <div class="form-group">
