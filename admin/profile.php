@@ -2,12 +2,26 @@
 <?php 
 
    if(isset($_SESSION["username"])){
-      
+      $username = isset($_SESSION["username"]);
+      $query = "SELECT * FROM users WHERE username = '{$username}'";
+
+      $select_user_profile_query = mysqli_query($connection, $query);
+      echo $username;
+      while($row = mysqli_fetch_array($select_user_profile_query)) {
+         $user_id = $row["user_id"];
+         $username = $row["username"];
+         $user_password = $row["user_password"];
+         $user_firstname = $row["user_firstname"];
+         $user_lastname = $row["user_lastname"];
+         $user_email = $row["user_email"];
+         $user_image = $row["user_image"];
+         $user_role = $row["user_role"];
+      }
    }
 ?>
 <?php include "includes/admin_navigation.php"; ?>
       <div id="page-wrapper">
-
+         <?php echo $username; ?>
          <div class="container-fluid">
 
             <!-- Page Heading -->
@@ -55,7 +69,7 @@
                      </div>
 
                      <div class="form-group">
-                        <input type="submit" class="btn btn-primary" name="edit_user"  value="Publish Post">
+                        <input type="submit" class="btn btn-primary" name="edit_user"  value="Update Profile">
                      </div>
                   </form>
                </div>

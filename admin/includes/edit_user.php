@@ -80,6 +80,6 @@
    </div>
 
    <div class="form-group">
-      <input type="submit" class="btn btn-primary" name="edit_user"  value="Publish Post">
+      <input type="submit" class="btn btn-primary" name="edit_user"  value="Update User">
    </div>
 </form>
