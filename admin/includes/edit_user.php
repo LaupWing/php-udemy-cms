@@ -47,10 +47,15 @@
       <label for="post_status">Lastname</label>
       <input type="text" name="user_lastname" value="<?php echo $user_lastname ?>" class="form-control">
    </div>
-   <select name="user_role" value="<?php echo $user_role ?>" id="">
-      <option value="subscriber">Select options</option>      
-      <option value="admin">Admin</option>      
-      <option value="subscriber">Subscriber</option>      
+   <select name="user_role" id="">
+      <option value="<?php echo $user_role ?>"><?php echo $user_role ?></option>
+      <?php 
+         if($user_role == "admin"){
+            echo "<option value='subscriber'>subscriber</option>";
+         }else {
+            echo "<option value='admin'>admin</option>";
+         }
+      ?>
    </select>
    
    <!-- <div class="form-group">
