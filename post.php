@@ -116,7 +116,8 @@
                </div>
             <?php } ?>
             <hr>
-      </div>
+         </div>
+         <?php include "./includes/sidebar.php" ?>
       <!-- /.row -->
 
 

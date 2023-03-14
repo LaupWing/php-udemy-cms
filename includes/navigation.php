@@ -26,9 +26,16 @@
             <li>
                <a href="#">Services</a>
             </li>
-            <li>
-               <a href="#">Contact</a>
-            </li>
+            <?php
+               session_start();
+               if(isset($_SESSION["username"])){
+                  if(isset($_GET["p_id"])) {
+                     $post_id = $_GET["p_id"];
+                     echo "<li><a href='admin/posts.php?source=edit_post&p_id={$post_id}'>Edit Post</a></li>";
+                  }
+               }
+            ?>
+            
          </ul>
       </div>
    </div>
