@@ -1,6 +1,7 @@
 <?php
    if(isset($_POST["checkBoxArray"])){
       foreach($_POST["checkBoxArray"] as $checkBoxValue){
+         echo $checkBoxValue;
          $bulk_options = $_POST["bulk_options"];
       }
    }
@@ -52,7 +53,7 @@
                $post_date = $row["post_date"];
    
                echo "<tr>";
-               echo "<td> <input class='checkboxes' type='checkbox' name='checkboxyArray[]' value='{$post_id}'></td>";
+               echo "<td> <input class='checkboxes' type='checkbox' name='checkBoxArray[]' value='{$post_id}'></td>";
                echo "<td>{$post_id}</td>";
                echo "<td>{$post_title}</td>";
                echo "<td>{$post_author}</td>";
