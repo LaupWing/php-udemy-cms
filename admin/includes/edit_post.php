@@ -50,6 +50,8 @@
       $query .= "WHERE post_id = {$post_id} ";
       $update_post = mysqli_query($connection, $query);
       confirm($update_post);
+
+      echo "<p class='bg-success'>Post updated. <a href='../post.php?p_id={$post_id}'>View Post</a> Or <a href='posts.php'>Eidt more post</a></p>";
    }
 ?>
 
