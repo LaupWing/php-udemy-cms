@@ -59,8 +59,8 @@
       <input type="text" name="post_tags" class="form-control">
    </div>
    <div class="form-group">
-      <label for="post_content">Post Content</label>
-      <textarea name="post_content" class="form-control" cols="30" rows="10"></textarea>
+      <label for="summernote">Post Content</label>
+      <textarea name="post_content" id="summernote" class="form-control" cols="30" rows="10"></textarea>
    </div>
 
    <div class="form-group">
