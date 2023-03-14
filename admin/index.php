@@ -23,11 +23,11 @@
                         <i class="fa fa-file-text fa-5x"></i>
                      </div>
                      <div class="col-xs-9 text-right">
-                        <?php 
-                           $query = "SELECT * FROM posts";
-                           $select_all_post = mysqli_query($connection, $query);
-                           $post_count = mysqli_num_rows($select_all_post);
-                           echo "<div class='huge'>{$post_count}</div>"
+                        <?php
+                        $query = "SELECT * FROM posts";
+                        $select_all_post = mysqli_query($connection, $query);
+                        $post_count = mysqli_num_rows($select_all_post);
+                        echo "<div class='huge'>{$post_count}</div>"
                         ?>
                         <div>Posts</div>
                      </div>
@@ -50,11 +50,11 @@
                         <i class="fa fa-comments fa-5x"></i>
                      </div>
                      <div class="col-xs-9 text-right">
-                        <?php 
-                           $query = "SELECT * FROM comments";
-                           $select_all_comments = mysqli_query($connection, $query);
-                           $comment_count = mysqli_num_rows($select_all_comments);
-                           echo "<div class='huge'>{$comment_count}</div>"
+                        <?php
+                        $query = "SELECT * FROM comments";
+                        $select_all_comments = mysqli_query($connection, $query);
+                        $comment_count = mysqli_num_rows($select_all_comments);
+                        echo "<div class='huge'>{$comment_count}</div>"
                         ?>
                         <div>Comments</div>
                      </div>
@@ -77,11 +77,11 @@
                         <i class="fa fa-user fa-5x"></i>
                      </div>
                      <div class="col-xs-9 text-right">
-                        <?php 
-                           $query = "SELECT * FROM users";
-                           $select_all_users = mysqli_query($connection, $query);
-                           $user_count = mysqli_num_rows($select_all_users);
-                           echo "<div class='huge'>{$user_count}</div>"
+                        <?php
+                        $query = "SELECT * FROM users";
+                        $select_all_users = mysqli_query($connection, $query);
+                        $user_count = mysqli_num_rows($select_all_users);
+                        echo "<div class='huge'>{$user_count}</div>"
                         ?>
                         <div> Users</div>
                      </div>
@@ -104,11 +104,11 @@
                         <i class="fa fa-list fa-5x"></i>
                      </div>
                      <div class="col-xs-9 text-right">
-                        <?php 
-                           $query = "SELECT * FROM categories";
-                           $select_all_catgegories = mysqli_query($connection, $query);
-                           $category_count = mysqli_num_rows($select_all_catgegories);
-                           echo "<div class='huge'>{$category_count}</div>"
+                        <?php
+                        $query = "SELECT * FROM categories";
+                        $select_all_catgegories = mysqli_query($connection, $query);
+                        $category_count = mysqli_num_rows($select_all_catgegories);
+                        echo "<div class='huge'>{$category_count}</div>"
                         ?>
                         <div>Categories</div>
                      </div>
@@ -125,6 +125,36 @@
          </div>
       </div>
       <!-- /.row -->
+      <div class="row">
+         <script type="text/javascript">
+            google.charts.load('current', {
+               'packages': ['bar']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+               var data = google.visualization.arrayToDataTable([
+                  ['Year', 'Sales', 'Expenses', 'Profit'],
+                  ['2014', 1000, 400, 200],
+                  ['2015', 1170, 460, 250],
+                  ['2016', 660, 1120, 300],
+                  ['2017', 1030, 540, 350]
+               ]);
+
+               var options = {
+                  chart: {
+                     title: 'Company Performance',
+                     subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                  }
+               };
+
+               var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+               chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+         </script>
+         <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+      </div>
 
    </div>
    <!-- /.container-fluid -->
