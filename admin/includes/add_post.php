@@ -19,6 +19,9 @@
       $create_post_query = mysqli_query($connection, $query);
 
       confirm($create_post_query);
+      $post_id = mysqli_insert_id($connection);
+
+      echo "<p class='bg-success'>Post created. <a href='../post.php?p_id={$post_id}'>View Post</a> Or <a href='posts.php'>Eidt more post</a></p>";
    }
 ?>
 
