@@ -10,6 +10,18 @@
                $update_published_status = mysqli_query($connection, $query);
                confirm($update_published_status);
                break;
+            case "draft":
+
+               $query = "UPDATE posts SET post_status = 'draft'  WHERE post_id = {$post_id}";
+               $update_draft_status = mysqli_query($connection, $query);
+               confirm($update_draft_status);
+               break;
+            case "delete":
+
+               $query = "DELETE FROM posts WHERE post_id = {$post_id}";
+               $update_delete_status = mysqli_query($connection, $query);
+               confirm($update_delete_status);
+               break;
          }
       }
    }
