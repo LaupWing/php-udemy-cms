@@ -39,7 +39,7 @@
       </div>
       <div class="col-xs-4">
          <input type="submit" name="submit" class="btn btn-success" value="Apply">
-         <a href="add_post.php" class="bt btn-primary">Add new</a>
+         <a href="posts.php?source=add_post" class="bt btn-primary">Add new</a>
       </div>
       <thead>
          <tr>
