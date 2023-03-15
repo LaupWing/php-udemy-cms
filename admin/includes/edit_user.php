@@ -1,9 +1,9 @@
 <?php 
-   if(isset($_GET["edit"])){
-      $user_id = $_GET["edit"];
+   if(isset($_GET["edit_user"])){
+      $user_id = $_GET["edit_user"];
       $query = "SELECT * FROM users WHERE user_id = $user_id";
       $select_user = mysqli_query($connection, $query);
-      while($row = mysqli_fetch_assoc($select_users)){
+      while($row = mysqli_fetch_assoc($select_user)){
          $user_id = $row["user_id"];
          $username = $row["username"];
          $user_password = $row["user_password"];
