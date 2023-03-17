@@ -75,7 +75,7 @@
                      echo "<script>alert('fields cannot be empty')</script>";
                   }
 
-
+                  header("Location: post.php?p_id={$post_id}");
                }
             ?>
          <!-- Comments Form -->
