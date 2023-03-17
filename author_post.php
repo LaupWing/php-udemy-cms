@@ -12,6 +12,7 @@
             <?php 
                if(isset($_GET["p_id"])){
                   $post_id = $_GET["p_id"];
+                  $post_author = $_GET["post_author"];
                }
 
                $query = "SELECT * FROM posts WHERE post_id = {$post_id}";
