@@ -99,9 +99,10 @@
                echo "<td> <input class='checkboxes' type='checkbox' name='checkBoxArray[]' value='{$post_id}'></td>";
                echo "<td>{$post_id}</td>";
 
-               if(isset($post_author) || !empty($post_author)){
+               if(!empty($post_author)){
                   echo "<td>{$post_author}</td>";
-               }elseif(isset($post_user) || !empty($post_user)){
+               }elseif(!empty($post_user)){
+                  
                   echo "<td>{$post_author}</td>";
                }
 
