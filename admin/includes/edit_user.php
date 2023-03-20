@@ -53,6 +53,8 @@
       $query .= "WHERE user_id = {$user_id} ";
       $update_user = mysqli_query($connection, $query);
       confirm($update_user);
+   }else {
+      header("Location: index.php");
    }
 ?>
 
@@ -90,7 +92,7 @@
    </div>
    <div class="form-group">
       <label for="post_content">Password</label>
-      <input name="user_password" value="<?php echo $user_password ?>" class="form-control" type="password" />
+      <input name="user_password" autocomplete="off" class="form-control" type="password" />
    </div>
 
    <div class="form-group">
