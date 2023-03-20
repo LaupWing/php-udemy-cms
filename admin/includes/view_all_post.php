@@ -85,6 +85,7 @@
             while($row = mysqli_fetch_assoc($select_posts)){
                $post_id = $row["post_id"];
                $post_title = $row["post_title"];
+               $post_user = $row["post_user"];
                $post_author = $row["post_author"];
                $post_category_id = $row["post_category_id"];
                $post_status = $row["post_status"];
@@ -97,8 +98,14 @@
                echo "<tr>";
                echo "<td> <input class='checkboxes' type='checkbox' name='checkBoxArray[]' value='{$post_id}'></td>";
                echo "<td>{$post_id}</td>";
+
+               if(isset($post_author) || !empty($post_author)){
+                  echo "<td>{$post_author}</td>";
+               }elseif(isset($post_user) || !empty($post_user)){
+                  echo "<td>{$post_author}</td>";
+               }
+
                echo "<td>{$post_title}</td>";
-               echo "<td>{$post_author}</td>";
                $query = "SELECT * FROM categories WHERE category_id = $post_category_id";
                $select_categories_id = mysqli_query($connection, $query);
                while($row = mysqli_fetch_assoc($select_categories_id)){
