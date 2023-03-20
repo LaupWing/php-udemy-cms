@@ -22,21 +22,11 @@
       $user_role = $_POST["user_role"];
       // $post_image = $_FILES["image"]["name"];
       // $post_image_temp = $_FILES["image"]["tmp_name"];
+      $post_date = date("d-m-y");
 
       $username = $_POST["username"];
       $user_password = $_POST["user_password"];
 
-      $query = "SELECT randSalt FROM users";
-      $select_randsalt_query = mysqli_query($connection, $query);
-
-      if(!$select_randsalt_query){
-         die("Query Failed". mysqli_error($connection));
-      }
-
-      $row = mysqli_fetch_array($select_randsalt_query);
-      $salt = $row["randSalt"];
-      $hashed_password = crypt($user_password, $salt);
-      // $post_date = date("d-m-y");
 
       // move_uploaded_file($post_image_temp, "../images/{$post_image}");
 
