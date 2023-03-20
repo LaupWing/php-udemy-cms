@@ -30,25 +30,46 @@
       <label for="title">Post Title</label>
       <input type="text" name="title" class="form-control">
    </div>
-   <select name="post_category" id="">
-      <?php 
-         $query = "SELECT * FROM categories";
-         $select_categories = mysqli_query($connection, $query);
-
-         confirm($select_categories);
-
-         while($row = mysqli_fetch_assoc($select_categories)){
-            $category_id = $row["category_id"];
-            $category_title = $row["category_title"];
-            echo "<option value='{$category_id}'>{$category_title}</option>";
-         }
-      ?>
-      
-   </select>
    <div class="form-group">
+      <label for="post_category">Category</label>
+      <select name="post_category" id="">
+         <?php 
+            $query = "SELECT * FROM categories";
+            $select_categories = mysqli_query($connection, $query);
+   
+            confirm($select_categories);
+   
+            while($row = mysqli_fetch_assoc($select_categories)){
+               $category_id = $row["category_id"];
+               $category_title = $row["category_title"];
+               echo "<option value='{$category_id}'>{$category_title}</option>";
+            }
+         ?>
+         
+      </select>
+   </div>
+   <div class="form-group">
+      <label for="users">Users</label>
+      <select name="post_category" id="">
+         <?php 
+            $query = "SELECT * FROM users";
+            $select_users = mysqli_query($connection, $query);
+   
+            confirm($select_users);
+   
+            while($row = mysqli_fetch_assoc($select_users)){
+               $user_id = $row["user_id"];
+               $username = $row["username"];
+               echo "<option value='{$user_id}'>{$username}</option>";
+            }
+         ?>
+         
+      </select>
+   </div>
+   <!-- <div class="form-group">
       <label for="title">Post Author</label>
       <input type="text" name="author" class="form-control">
-   </div>
+   </div> -->
    <div class="form-group">
       <select name="post_status" id="">
          <option value="draft">Post status</option>
