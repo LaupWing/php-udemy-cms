@@ -6,7 +6,7 @@
       $to = "support@laupwing.cokm";
       $subject = wordwrap($_POST["subject"], 70);
       $body = $_POST["body"];
-      $header = $_POST["email"];
+      $header = "From: ". $_POST["email"];
 
       mail($to, $subject, $body, $header);
    }else {
