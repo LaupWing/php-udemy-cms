@@ -26,6 +26,9 @@
             <li>
                <a href="registration.php">Registration</a>
             </li>
+            <li>
+               <a href="contact.php">Contact</a>
+            </li>
             <?php
                session_start();
                if(isset($_SESSION["username"])){
