@@ -24,9 +24,8 @@
                      </div>
                      <div class="col-xs-9 text-right">
                         <?php
-                        $query = "SELECT * FROM posts";
-                        $select_all_post = mysqli_query($connection, $query);
-                        $post_count = mysqli_num_rows($select_all_post);
+                        
+                        $post_count = recordCount("posts");
                         echo "<div class='huge'>{$post_count}</div>"
                         ?>
                         <div>Posts</div>
@@ -51,9 +50,7 @@
                      </div>
                      <div class="col-xs-9 text-right">
                         <?php
-                        $query = "SELECT * FROM comments";
-                        $select_all_comments = mysqli_query($connection, $query);
-                        $comment_count = mysqli_num_rows($select_all_comments);
+                        $comment_count = recordCount("comments");
                         echo "<div class='huge'>{$comment_count}</div>"
                         ?>
                         <div>Comments</div>
@@ -78,9 +75,7 @@
                      </div>
                      <div class="col-xs-9 text-right">
                         <?php
-                        $query = "SELECT * FROM users";
-                        $select_all_users = mysqli_query($connection, $query);
-                        $user_count = mysqli_num_rows($select_all_users);
+                        $user_count = recordCount("users");
                         echo "<div class='huge'>{$user_count}</div>"
                         ?>
                         <div> Users</div>
@@ -105,9 +100,7 @@
                      </div>
                      <div class="col-xs-9 text-right">
                         <?php
-                        $query = "SELECT * FROM categories";
-                        $select_all_catgegories = mysqli_query($connection, $query);
-                        $category_count = mysqli_num_rows($select_all_catgegories);
+                        $category_count = recordCount("categories");
                         echo "<div class='huge'>{$category_count}</div>"
                         ?>
                         <div>Categories</div>
