@@ -73,7 +73,11 @@
             while($row = mysqli_fetch_assoc($select_categories)){
                $category_id = $row["category_id"];
                $category_title = $row["category_title"];
-               echo "<option value='{$category_id}'>{$category_title}</option>";
+               if($category_id == $post_category_id){
+                  echo "<option selected value='{$category_id}'>{$category_title}</option>";
+               }else{
+                  echo "<option value='{$category_id}'>{$category_title}</option>";
+               }
             }
          ?>
          
