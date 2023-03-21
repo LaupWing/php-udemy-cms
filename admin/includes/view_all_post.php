@@ -1,4 +1,5 @@
 <?php
+   include("delete_modal.php");
    if(isset($_POST["checkBoxArray"])){
       foreach($_POST["checkBoxArray"] as $post_id){
          $bulk_options = $_POST["bulk_options"];
@@ -125,7 +126,7 @@
                echo "<td>{$post_date}</td>";
                echo "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
                echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
-               echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?')\" href='posts.php?delete={$post_id}'>Delete</a></td>";
+               echo "<td><a rel='{$post_id}' class='delete_link' href=''>Delete</a></td>";
                echo "<td><a href='posts.php?reset={$post_id}'>{$post_views_count}</a></td>";
                echo "</tr>";
             }
@@ -148,3 +149,11 @@
       </tbody>
    </table>
 </form>
+
+<script>
+   $(document).ready(function () {
+      $("delete_link").on("click", function(){
+         var id = $(this).attr("rel")
+      })
+   })
+</script>
