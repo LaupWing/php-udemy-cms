@@ -160,7 +160,8 @@ function emailExists($email){
 
 
 function redirect($location){
-   return header("Location: ". $location);
+   header("Location: ". $location);
+   exit;
 }
 
 function registerUser($username, $email, $password){
