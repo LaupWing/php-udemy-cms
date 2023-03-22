@@ -73,6 +73,7 @@
                            placeholder="Enter Desired Username"
                            value="<?php echo isset($username) ? $username : "" ?>"
                         >
+                        <p><?php echo isset($error["username"]) ? $error["username"] : "" ?></p>
                      </div>
                      <div class="form-group">
                         <label for="email" class="sr-only">Email</label>
@@ -85,10 +86,12 @@
                            autocomplete="on"
                            value="<?php echo isset($email) ? $email : "" ?>"
                         >
+                        <p><?php echo isset($error["email"]) ? $error["email"] : "" ?></p>
                      </div>
                      <div class="form-group">
                         <label for="password" class="sr-only">Password</label>
                         <input type="password" name="password" id="key" class="form-control" placeholder="Password">
+                        <p><?php echo isset($error["password"]) ? $error["password"] : "" ?></p>
                      </div>
 
                      <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
