@@ -120,21 +120,13 @@
       <!-- /.row -->
       <div class="row">
          <?php 
-            $query = "SELECT * FROM posts WHERE post_status = 'published'";
-            $select_all_published_post = mysqli_query($connection, $query);
-            $post_published_count = mysqli_num_rows($select_all_published_post);
+            $post_published_count = checkStatus("posts", "post_status", "published");
 
-            $query = "SELECT * FROM posts WHERE post_status = 'draft'";
-            $select_all_draft_post = mysqli_query($connection, $query);
-            $post_draft_count = mysqli_num_rows($select_all_draft_post);
+            $post_draft_count = checkStatus("posts", "post_status", "draft");
 
-            $query = "SELECT * FROM comments WHERE comment_status = 'unapproved'";
-            $unapproved_comments_query = mysqli_query($connection, $query);
-            $unapproved_comments_count = mysqli_num_rows($unapproved_comments_query);
+            $unapproved_comments_count = checkStatus("comments", "comment_status", "unapproved");
 
-            $query = "SELECT * FROM users WHERE user_role = 'subscriber'";
-            $select_all_subscribers = mysqli_query($connection, $query);
-            $subscribers_count = mysqli_num_rows($select_all_subscribers);
+            $subscribers_count = checkUserRole("users", "user_role", "subscriber");
          ?>
          <script type="text/javascript">
             google.charts.load('current', {
