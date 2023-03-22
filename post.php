@@ -13,7 +13,7 @@
                if(isset($_GET["p_id"])){
                   $post_id = $_GET["p_id"];
 
-                  $view_query = "UDPATE posts SET post_views_count = post_view_count + 1 WHERE post_id = {$post_id}";
+                  $view_query = "UPDATE posts SET post_views_count = post_views_count + 1 WHERE post_id = {$post_id}";
                   $send_query = mysqli_query($connection, $view_query);
                   if(!$send_query){
                      die("Query failed");

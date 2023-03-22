@@ -2,16 +2,16 @@
 <?php include "includes/header.php"; ?>
 
 <?php 
+   $error = [
+      "username" => "",
+      "email" => "",
+      "password" => "",
+   ];
    if($_SERVER["REQUEST_METHOD"] == "POST"){
       $username = trim($_POST["username"]);
       $email = trim($_POST["email"]);
       $password = trim($_POST["password"]);
 
-      $error = [
-         "username" => "",
-         "email" => "",
-         "password" => "",
-      ];
 
       if(strlen($username) < 4){
          $error["username"] = "Username needs to be longer than 4 characters";
@@ -35,20 +35,20 @@
          $error["password"] = "Password cannot be empty";
       }
 
+      foreach ($error as $key => $value){
+         if(empty($value)){
+            unset($error[$key]);
+         }
+      }
+      
+      if(empty($error)){
+         registerUser($username, $email, $password);
+         loginUser($username, $password);
+      }
    }else {
       $message = "";
    }
 
-   foreach ($error as $key => $value){
-      if(empty($value)){
-         unset($error[$key]);
-      }
-   }
-   
-   if(empty($error)){
-      registerUser($username, $email, $password);
-      loginUser($username, $password);
-   }
 ?>
 
 <!-- Navigation -->
