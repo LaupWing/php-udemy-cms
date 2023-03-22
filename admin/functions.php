@@ -163,29 +163,21 @@ function redirect($location){
    return header("Location: ". $location);
 }
 
-function registerUser($username, $email, $passsword){
+function registerUser($username, $email, $password){
    global $connection;
-   $username = $_POST["username"];
-   $email = $_POST["email"];
-   $password = $_POST["password"];
 
-   if(usernameExists($username)){
-      
-   }
+   $username = mysqli_real_escape_string($connection, $username);
+   $email = mysqli_real_escape_string($connection, $email);
+   $password = mysqli_real_escape_string($connection, $password);
 
-   if(!empty($username) && !empty($email) && !empty($password)){
-      $username = mysqli_real_escape_string($connection, $username);
-      $email = mysqli_real_escape_string($connection, $email);
-      $password = mysqli_real_escape_string($connection, $password);
+   $password = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
 
-      $password = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
-
-      $query = "INSERT INTO users (username, user_email, user_password, user_role)";
-      $query .= "VALUES('{$username}','{$email}','{$password}', 'subscriber')";
-      $register_user_query = mysqli_query($connection, $query);
-      
-      confirm($register_user_query);
-   }
+   $query = "INSERT INTO users (username, user_email, user_password, user_role)";
+   $query .= "VALUES('{$username}','{$email}','{$password}', 'subscriber')";
+   $register_user_query = mysqli_query($connection, $query);
+   
+   confirm($register_user_query);
+   
 }
 
 function loginUser($username, $password){
