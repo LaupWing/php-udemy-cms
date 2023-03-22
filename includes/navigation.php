@@ -34,20 +34,20 @@
             ?>
 
             <li>
-               <a href="admin">Admin</a>
+               <a href="/cms/admin">Admin</a>
             </li>
             <li class="<?php echo $registration_class; ?>">
-               <a href="registration.php">Registration</a>
+               <a href="/cms/registration.php">Registration</a>
             </li>
             <li>
-               <a href="contact.php">Contact</a>
+               <a href="/cms/contact.php">Contact</a>
             </li>
             <?php
                session_start();
                if(isset($_SESSION["username"])){
                   if(isset($_GET["p_id"])) {
                      $post_id = $_GET["p_id"];
-                     echo "<li><a href='admin/posts.php?source=edit_post&p_id={$post_id}'>Edit Post</a></li>";
+                     echo "<li><a href='/cms/admin/posts.php?source=edit_post&p_id={$post_id}'>Edit Post</a></li>";
                   }
                }
             ?>
