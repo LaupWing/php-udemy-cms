@@ -83,7 +83,11 @@
       </thead>
       <tbody>
          <?php 
-            $query = "SELECT * FROM posts ORDER BY post_id DESC";
+            // $query = "SELECT * FROM posts ORDER BY post_id DESC";
+            $query = "SELECT posts.post_id, post.post_author, post.post_user, post.post_title, post.post_category_id, post.post_status, post.post_image,";
+            $query .= "post.post_tags, post.post_comment_count, post.post_date, post.post_views_count, categories.category_id, categories.category_title ";
+            $query .= "FROM posts LEFT JOIN categories ON post.category_id";
+
             $select_posts = mysqli_query($connection, $query);
             while($row = mysqli_fetch_assoc($select_posts)){
                $post_id = $row["post_id"];
@@ -140,7 +144,7 @@
                $delete_query = mysqli_query($connection, $query);
                header("Location: post.php");
             }
-            if(isset($_GET["rest"])){
+            if(isset($_GET["reset"])){
                $post_id = $_GET["reset"];
                $query = "UPDATE posts SET post_views_count = 0 where post_id = {$post_id}";
                $reset_query = mysqli_query($connection, $query);
