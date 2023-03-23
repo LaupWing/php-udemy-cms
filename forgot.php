@@ -2,6 +2,12 @@
 <?php include "includes/header.php"; ?>
 
 <?php 
+   use PHPMailer\PHPMailer\PHPMailer;
+   use PHPMailer\PHPMailer\SMTP;
+   use PHPMailer\PHPMailer\Exception;
+   require 'vendor/autoload.php';
+   require "./Classes/Config.php";
+
    if(!ifItIsMethod("get") && !isset($_GET["forgot"])){
       redirect("index");
    }
@@ -16,6 +22,30 @@
                mysqli_stmt_bind_param($stmt, "s", $email);
                mysqli_stmt_execute($stmt);
                mysqli_stmt_close($stmt);
+
+               $mail = new PHPMailer();
+
+               $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+               $mail->isSMTP();                                            //Send using SMTP
+               $mail->Host       = Config::SMTP_HOST;                     //Set the SMTP server to send through
+               $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+               $mail->Username   = Config::SMTP_USER;                     //SMTP username
+               $mail->Password   = Config::SMTP_PASSWORD;                               //SMTP password
+               $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+               $mail->Port       = Config::SMTP_PORT;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+               $mail->isHTML(true);
+
+               $mail->setFrom("laupwing@gmail.com", "Laup wing");
+               $mail->addAddress($email);
+               $mail->Subject = "This is a test email";
+               $mail->Body = "Email body";
+
+               if($mail->send()){
+                  echo "it was send";
+               }else {
+                  
+               }
+           
             }else {
 
             }
