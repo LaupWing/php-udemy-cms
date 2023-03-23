@@ -19,6 +19,28 @@ function insert_categories(){
    }
 }
 
+function ifItIsMethod($method = null){
+   if($_SERVER["REQUEST_METHOD"] == strtoupper($method)){
+      return true;
+   }else{
+      return false;
+   }
+}
+
+function isLoggedIn(){
+   if(isset($_SESSION["user_role"])){
+      return true;
+   }else{
+      return false;
+   }
+}
+
+function checkIfUserIsLoggedInAndRedirect($redirectLocation){
+   if(isLoggedIn()){
+      redirect($redirectLocation);
+   }
+}
+
 function escape($string){
    global $connection;
    mysqli_real_escape_string($connection, trim($string));
