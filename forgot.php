@@ -6,7 +6,7 @@
    use PHPMailer\PHPMailer\SMTP;
    use PHPMailer\PHPMailer\Exception;
    require 'vendor/autoload.php';
-   require "./Classes/Config.php";
+   require "./classes/Config.php";
 
    if(!ifItIsMethod("get") && !isset($_GET["forgot"])){
       redirect("index");
@@ -34,6 +34,7 @@
                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                $mail->Port       = Config::SMTP_PORT;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
                $mail->isHTML(true);
+               $mail->CharSet = "UTF-8";
 
                $mail->setFrom("laupwing@gmail.com", "Laup wing");
                $mail->addAddress($email);
@@ -43,7 +44,7 @@
                if($mail->send()){
                   echo "it was send";
                }else {
-                  
+
                }
            
             }else {

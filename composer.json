@@ -1,18 +1,23 @@
 {
-    "name": "pin-d/cms",
-    "require-dev": {
-        "phpmailer/phpmailer": "^6.8"
-    },
-    "autoload": {
-        "psr-4": {
-            "PinD\\Cms\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "LaupWing",
-            "email": "loc_strict@hotmail.com"
-        }
-    ],
-    "require": {}
+   "name": "pin-d/cms",
+   "require-dev": {
+      "phpmailer/phpmailer": "^6.8"
+   },
+   "autoload": {
+      "psr-4": {
+         "PinD\\Cms\\": "src/"
+      }
+   },
+   "autoload-dev": {
+      "classmap": [
+         "classes"
+      ]
+   },
+   "authors": [
+      {
+         "name": "LaupWing",
+         "email": "loc_strict@hotmail.com"
+      }
+   ],
+   "require": {}
 }
