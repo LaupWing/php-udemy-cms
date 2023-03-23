@@ -1,6 +1,19 @@
 <?php include "includes/db.php"; ?>
 <?php include "includes/header.php"; ?>
 
+<?php 
+   if(!ifItIsMethod("get") || !$_GET["forgot"]){
+      redirect("index");
+   }
+   if(ifItIsMethod("post")){
+      if(isset($_POST["email"])){
+         $email = $_POST["email"];
+         $length = 50;
+         $token = bin2hex(openssl_random_pseudo_bytes($length));
+      }
+   }
+
+?>
 
 <!-- Page Content -->
 <div class="container">
@@ -17,7 +30,6 @@
                      <p>You can reset your password here.</p>
                      <div class="panel-body">
                         <form id="register-form" role="form" autocomplete="off" class="form" method="post">
-
                            <div class="form-group">
                               <div class="input-group">
                                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
