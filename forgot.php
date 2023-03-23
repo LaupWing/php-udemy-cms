@@ -8,7 +8,7 @@
    require 'vendor/autoload.php';
    require "./classes/Config.php";
 
-   if(!ifItIsMethod("get") && !isset($_GET["forgot"])){
+   if(!isset($_GET["forgot"])){
       redirect("index");
    }
    if(ifItIsMethod("post")){
@@ -39,7 +39,12 @@
                $mail->setFrom("laupwing@gmail.com", "Laup wing");
                $mail->addAddress($email);
                $mail->Subject = "This is a test email";
-               $mail->Body = "Email body";
+               $mail->Body = "
+                  <h1>Please click to reset your password</h1>
+                  <a href='http://localhost:888/cms/reset.php?email='{$email}'&token='{$token}'>
+                     http://localhost:888/cms/reset.php?email='{$email}'&token='{$token}'
+                  </a>
+               ";
 
                if($mail->send()){
                   echo "it was send";
@@ -53,7 +58,6 @@
          }
       }
    }
-
 ?>
 
 <!-- Page Content -->
