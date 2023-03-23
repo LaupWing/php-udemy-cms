@@ -222,19 +222,19 @@ function loginUser($username, $password){
       $db_user_password = $row["user_password"];
       $db_user_lastname = $row["user_lastname"];
       $db_user_role = $row["user_role"];
+      $password = crypt($password, $db_user_password);
+   
+      if($username === $db_username && password_verify($password, $db_user_password)){
+         $_SESSION["username"] = $db_username;
+         $_SESSION["user_firstname"] = $db_user_firstname;
+         $_SESSION["user_lastname"] = $db_user_lastname;
+         $_SESSION["user_role"] = $db_user_role;
+         
+         redirect("/cms/admin");
+      }else {
+         return false;
+      }
    }
 
-   $password = crypt($password, $db_user_password);
-
-   if($username === $db_username && password_verify($password, $db_user_password)){
-      $_SESSION["username"] = $db_username;
-      $_SESSION["user_firstname"] = $db_user_firstname;
-      $_SESSION["user_lastname"] = $db_user_lastname;
-      $_SESSION["user_role"] = $db_user_role;
-      
-      redirect("/cms/admin");
-   }else {
-      redirect("/cms/index.php");
-   }
 }
 ?>
