@@ -22,6 +22,24 @@
       mysqli_query($connection, "INSERT INTO likes(user_id, post_id) VALUES({$user_id}, {$post_id})");
       exit();
    }
+   if(isset($_POST["unliked"])){
+      $post_id = $_POST["post_id"];
+      $user_id = $_POST["user_id"];
+
+      $searchPostQuery = "SELECT * FROM posts WHERE post_id='{$post_id}'";
+      $postResult = mysqli_query($connection, $searchPostQuery);
+      $post = mysqli_fetch_array($postResult);
+      $likes = $post["likes"];
+
+      if(mysqli_num_rows($postResult) >= 1){
+         // echo ""
+      }
+
+      mysqli_query($connection, "UPDATE posts SET likes=$likes-1 WHERE post_id={$post_id}");
+
+      mysqli_query($connection, "DELETE FROM likes WHERE post_id=$post_id AND user_id=$user_id");
+      exit();
+   }
 
 ?>
    <!-- Page Content -->
@@ -78,6 +96,9 @@
                <hr>
                <div class="row">
                   <p class="pull-right"><a class="like" href="#"> <span class="glyphicon glyphicon-thumbs-up"></span> Like</a></p>
+               </div>
+               <div class="row">
+                  <p class="pull-right"><a class="unlike" href="#"> <span class="glyphicon glyphicon-thumbs-down"></span> Unlike</a></p>
                </div>
                <div class="row">
                   <p class="pull-right">Like:10</p>
@@ -183,6 +204,19 @@ $(document).ready(function(){
          type: "post",
          data: {
             liked: 1,
+            post_id: post_id,
+            user_id: 26
+         }
+      })
+   })
+   $(".unlike").click(function() {
+
+      var post_id = "<?php echo $post_id; ?>"
+      $.ajax({
+         url: "/cms/post.php?p_id=<?php echo $post_id; ?>",
+         type: "post",
+         data: {
+            unliked: 1,
             post_id: post_id,
             user_id: 26
          }
