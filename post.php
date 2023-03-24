@@ -2,6 +2,13 @@
 <?php include "./includes/header.php" ?>
 <!-- Navigation -->
 <?php include "./includes/navigation.php" ?>
+
+<?php 
+   if(isset($_POST["liked"])){
+      
+   }
+
+?>
    <!-- Page Content -->
    <div class="container">
 
@@ -155,6 +162,16 @@
 $(document).ready(function(){
    $(".like").click(function() {
 
+      var post_id = "<?php echo $post_id; ?>"
+      $.ajax({
+         url: "/cms/post.php?p_id=<?php echo $post_id; ?>",
+         type: "post",
+         data: {
+            liked: 1,
+            post_id: post_id,
+            user_id: 26
+         }
+      })
    })
 })
 </script>
