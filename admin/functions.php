@@ -186,6 +186,14 @@ function redirect($location){
    exit;
 }
 
+function imagePlaceholder($image = ""){
+   if(!$image){
+      return "image_4.jpg"; 
+   }else {
+      return $image;
+   }
+}
+
 function registerUser($username, $email, $password){
    global $connection;
 
