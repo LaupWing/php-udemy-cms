@@ -13,8 +13,12 @@
       mysqli_stmt_fetch($stmt);
       mysqli_stmt_close($stmt);
       
-      if($_GET["token"] !== $token || $_GET["email"] !== $email){
-         redirect("index");
+      // if($_GET["token"] !== $token || $_GET["email"] !== $email){
+      //    redirect("index");
+      // }
+
+      if(isset($_POST["password"]) && isset($_POST["confirmPassword"])){
+
       }
    }
 ?>
