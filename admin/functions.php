@@ -35,6 +35,17 @@ function isLoggedIn(){
    }
 }
 
+function query($query){
+   global $connection;
+   return mysqli_query($connection, $query);
+}
+
+function loggedInUserId(){
+   if(isLoggedIn()){
+      $result = query("SELECT * FROM users WHERE username={$_SESSION['username']}");
+   }
+}
+
 function checkIfUserIsLoggedInAndRedirect($redirectLocation){
    if(isLoggedIn()){
       redirect($redirectLocation);
