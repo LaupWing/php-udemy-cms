@@ -5,7 +5,16 @@
 
 <?php 
    if(isset($_POST["liked"])){
-      
+      $post_id = $_POST["post_id"];
+
+      $searchPostQuery = "SELECT * FROM posts WHERE post_id='{$post_id}'";
+      $postResult = mysqli_query($connection, $searchPostQuery);
+      $post = mysqli_fetch_array($postResult);
+      $likes = $post["likes"];
+
+      if(mysqli_num_rows($postResult) >= 1){
+         // echo ""
+      }
    }
 
 ?>
