@@ -2,8 +2,20 @@
 <?php include "includes/header.php"; ?>
 
 <?php 
-   if(!isset($_GET["email"]) && !isset($_GET["token"])){
-      redirect("index");
+   // if(!isset($_GET["email"]) && !isset($_GET["token"])){
+   //    redirect("index");
+   // }
+   $token = "";
+   if($stmt = mysqli_prepare($connection, "SELECT username, user_email, token FROM users WHERE token=?")){
+      mysqli_stmt_bind_param($stmt, "s", $token);
+      mysqli_stmt_execute($stmt);
+      mysqli_stmt_bind_result($stmt, $username, $user_email, $token);
+      mysqli_stmt_fetch($stmt);
+      mysqli_stmt_close($stmt);
+      
+      if($_GET["token"] !== $token || $_GET["email"] !== $email){
+         redirect("index");
+      }
    }
 ?>
 
