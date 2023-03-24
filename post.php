@@ -49,12 +49,18 @@
                </p>
                <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date; ?></p>
                <hr>
-               <img class="img-responsive" src="images/<?php echo imagePlaceholder($post_image); ?>" alt="">
+               <img class="img-responsive" src="/cms/images/<?php echo imagePlaceholder($post_image); ?>" alt="">
                <hr>
                <p><?php echo $post_content; ?></p>
 
                <hr>
-
+               <div class="row">
+                  <p class="pull-right"><a href=""> <span class="glyphicon glyphicon-thumbs-up"></span> Like</a></p>
+               </div>
+               <div class="row">
+                  <p class="pull-right">Like:10</p>
+               </div>
+               <div class="clearfix"></div>
             <?php
                   }
                
@@ -144,3 +150,7 @@
 
 
 <?php include "./includes/footer.php" ?>
+
+<script>
+
+</script>
