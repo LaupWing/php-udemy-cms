@@ -98,7 +98,12 @@
                   <p class="pull-right"><a class="like" href="#"> <span class="glyphicon glyphicon-thumbs-up"></span> Like</a></p>
                </div>
                <div class="row">
-                  <p class="pull-right"><a class="unlike" href="#"> <span class="glyphicon glyphicon-thumbs-down"></span> Unlike</a></p>
+                  <p class="pull-right">
+                     <a class="<?php echo userLikedPost($post_id) ? 'unlike' : 'like' ?>" href="#"> 
+                        <span class="glyphicon glyphicon-thumbs-down"></span> 
+                        <?php echo userLikedPost($post_id) ? 'unlike' : 'like' ?>
+                     </a>
+                  </p>
                </div>
                <div class="row">
                   <p class="pull-right">Like:10</p>
