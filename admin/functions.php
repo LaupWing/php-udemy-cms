@@ -57,6 +57,12 @@ function userLikedPost($post_id = ""){
    return mysqli_num_rows($result) >= 1 ? true : false;
 }
 
+function getPostLikes($post_id) {
+   $result = query("SELECT * FROM likes WHERE post_id={$post_id}");
+   confirm($result);
+   echo mysqli_num_rows($result);
+}
+
 function checkIfUserIsLoggedInAndRedirect($redirectLocation){
    if(isLoggedIn()){
       redirect($redirectLocation);

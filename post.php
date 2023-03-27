@@ -95,7 +95,7 @@
 
                <hr>
                <div class="row">
-                  <p class="pull-right"><a class="like" href="#"> <span class="glyphicon glyphicon-thumbs-up"></span> Like</a></p>
+                  <p class="pull-right"><a class="like" href="#"> <span class="glyphicon glyphicon-thumbs-up"></span> Like <?php echo getPostLikes($post_id); ?> </a></p>
                </div>
                <div class="row">
                   <p class="pull-right">
