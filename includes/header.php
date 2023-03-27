@@ -23,6 +23,9 @@
       a.like {
          font-size: 22px;
       }
+      a.unlike {
+         font-size: 22px;
+      }
     </style>
 </head>
 

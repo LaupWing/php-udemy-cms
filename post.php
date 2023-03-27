@@ -92,11 +92,18 @@
                <img class="img-responsive" src="/cms/images/<?php echo imagePlaceholder($post_image); ?>" alt="">
                <hr>
                <p><?php echo $post_content; ?></p>
-
                <hr>
+               <?php 
+                  if(isLoggedIn()){
+               ?>
                <div class="row">
                   <p class="pull-right"><a class="like" href="#"> <span class="glyphicon glyphicon-thumbs-up"></span> Like <?php echo getPostLikes($post_id); ?> </a></p>
                </div>
+               <?php }  else {?>
+                  <div class="row">
+                     <p class="pull-right"><a class="like" href="#"> <span class="glyphicon glyphicon-thumbs-up"></span> Like <?php echo getPostLikes($post_id); ?> </a></p>
+                  </div>
+               <?php  }?>
                <div class="row">
                   <p class="pull-right">
                      <a class="<?php echo userLikedPost($post_id) ? 'unlike' : 'like' ?>" href="#"> 
@@ -106,7 +113,7 @@
                   </p>
                </div>
                <div class="row">
-                  <p class="pull-right">Like:10</p>
+                  <p class="pull-right">Like: <?php getPostLikes($post_id) ?></p>
                </div>
                <div class="clearfix"></div>
             <?php
@@ -204,13 +211,14 @@ $(document).ready(function(){
    $(".like").click(function() {
 
       var post_id = "<?php echo $post_id; ?>"
+      var user_id = "<?php echo $loggedInUserId(); ?>"
       $.ajax({
          url: "/cms/post.php?p_id=<?php echo $post_id; ?>",
          type: "post",
          data: {
             liked: 1,
             post_id: post_id,
-            user_id: 26
+            user_id: user_id
          }
       })
    })
@@ -223,7 +231,7 @@ $(document).ready(function(){
          data: {
             unliked: 1,
             post_id: post_id,
-            user_id: 26
+            user_id: user_id
          }
       })
    })
